@@ -1,0 +1,60 @@
+{
+    "material": [
+				{
+						"name": "石墨烯",
+						"resistivity": 1
+				},
+				{
+					"name": "银",
+					"resistivity": 1.59
+				},
+				{
+					"name": "铜",
+					"resistivity": 1.7
+				},
+				{
+					"name": "金",
+					"resistivity": 2.44
+				},
+				{
+					"name": "铝",
+					"resistivity": 2.82
+				},
+				{
+						"name": "钨",
+						"resistivity": 5.6
+				},
+				{
+						"name": "黄铜",
+						"resistivity": 8
+				},
+				{
+						"name": "铁",
+						"resistivity": 10
+				},
+				{
+						"name": "铂",
+						"resistivity": 11
+				},
+				{
+						"name": "铅",
+						"resistivity": 22
+				},
+				{
+						"name": "锰加宁",
+						"resistivity": 48.2
+				},
+				{
+						"name": "康铜",
+						"resistivity": 49
+				},
+				{
+						"name": "汞",
+						"resistivity": 98
+				},
+				{
+						"name": "镍铬合金",
+						"resistivity": 110
+				}
+    ]
+}

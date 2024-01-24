@@ -1,0 +1,116 @@
+<html>
+<head>
+    <style>
+        /* Add your desired CSS styles here */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .form-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .form-button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>电阻计算器</h1>
+        <div class="form-group">
+            <label class="form-label">材料选择</label>
+            <select class="form-select" id="material-select" onchange="updateResistivity()">
+							<option name="custom">自定义</option>
+						</select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">电阻率 ρ (x10<sup>-8</sup>Ω·m) (室温 20℃ 条件下)</label>
+            <input class="form-input" type="number" id="resistivity-input" oninput="changeMaterial2Custom()">
+        </div>
+        <div class="form-group">
+            <label class="form-label">长度 L (m)</label>
+            <input class="form-input" type="number" id="length-input">
+        </div>
+        <div class="form-group">
+            <label class="form-label">截面积 S (mm<sup>2</sup>)</label>
+            <input class="form-input" type="number" id="area-input">
+        </div>
+        <button class="form-button" onclick="calculate()">计算</button>
+        <div class="result" id="result-output"></div>
+    </div>
+</body>
+
+<script>
+	function updateResistivity() {
+			const materialSelect = document.getElementById('material-select');
+			const resistivityInput = document.getElementById('resistivity-input');
+			if (materialSelect.value != 'custom') {
+				resistivityInput.value = materialSelect.value;
+			}else {
+				resistivityInput.value = '';
+			}
+	}
+
+	function calculate() {
+			const resistivityInput = document.getElementById('resistivity-input');
+			const lengthInput = document.getElementById('length-input');
+			const areaInput = document.getElementById('area-input');
+			const resultOutput = document.getElementById('result-output');
+
+			const resistivity = parseFloat(resistivityInput.value);
+			const length = parseFloat(lengthInput.value);
+			const area = parseFloat(areaInput.value);
+
+			try {
+					const resistance = calculateResistance(resistivity, length, area) / 100;
+					resultOutput.textContent = '电阻值: ' + resistance.toFixed(3) + 'Ω';
+			} catch (error) {
+					resultOutput.textContent = 'Error: ' + error.message;
+			}
+	}
+
+	function changeMaterial2Custom() {
+		const materialSelect = document.getElementById('material-select');
+		materialSelect.selectedIndex  = 0;
+	}
+
+	// 加载材料电阻率
+	window.loadMaterialResistivity();
+</script>
+</html>

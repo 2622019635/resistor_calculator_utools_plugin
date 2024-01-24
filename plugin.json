@@ -1,0 +1,12 @@
+{
+	"main": "index.html",
+	"preload": "preload.js",
+	"logo": "logo.png",
+	"features": [
+		{
+		  "code": "电阻计算",
+		  "explain": "通过电阻率计算材料电阻",
+			"cmds":["电阻", "电阻率", "电阻计算", "r"]
+		}
+	]
+}
